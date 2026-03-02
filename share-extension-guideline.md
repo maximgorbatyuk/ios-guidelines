@@ -298,9 +298,7 @@ Then refresh signing in Xcode.
 1. Add `ShareExtension` target.
 2. Add to main app build phase: **Embed Foundation Extensions**.
 3. `PRODUCT_BUNDLE_IDENTIFIER = $(SHARE_EXTENSION_BUNDLE_ID)`.
-4. Set entitlements per configuration:
-   - Debug -> `ShareExtensionDebug.entitlements`
-   - Release -> `ShareExtension.entitlements`
+4. Set `CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements` for both Debug and Release (a single file using `$(APP_GROUP_IDENTIFIER)` resolves correctly per configuration via xcconfig).
 5. Add `AppGroupIdentifier = $(APP_GROUP_IDENTIFIER)` to both app and extension `Info.plist`.
 6. Keep app + extension using same xcconfig variable source.
 7. Ensure extension target includes only extension-safe code.
