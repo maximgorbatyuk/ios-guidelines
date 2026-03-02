@@ -14,7 +14,7 @@ Reusable implementation standards derived from cross-app analysis of:
 - `ios-guidelines/appearance-guideline.md` - Light/dark/system architecture, persistence, migration, import/export consistency, test matrix.
 - `ios-guidelines/onboarding-guideline.md` - Launch gating, onboarding structure/content, completion state, restart behavior.
 - `ios-guidelines/analytics-guideline.md` - Firebase/GA setup, Debug vs Release telemetry rules, `user_id` handling, privacy/compliance checks.
-- `ios-guidelines/potential-issue-fixes.md` - Cross-feature preventive fixes for configuration drift, entitlement tokenization, and release hardening.
+- `ios-guidelines/potential-issue-fixes.md` - Cross-feature preventive fixes for configuration drift, entitlement tokenization, Xcode Cloud signing metadata, and release hardening.
 
 ## Suggested Reading Order
 

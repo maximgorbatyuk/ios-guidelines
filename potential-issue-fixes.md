@@ -44,3 +44,38 @@ Never hardcode values like `group.dev...` directly in entitlement files.
 ### Scope
 
 Apply this rule to all app and extension targets in this workspace unless a target has a documented exception.
+
+---
+
+## 2) Xcode Cloud Signing Metadata Must Exist in TargetAttributes
+
+### Why this matters
+
+Targets with entitlements (app + extensions) require a valid signing context during archive/export. If project-level target signing metadata is missing, CI can fail in `exportArchive` with exit code 70 even when local simulator builds pass.
+
+Common symptom patterns:
+
+- `exportArchive` fails with exit code 70 in Xcode Cloud
+- target error: `has entitlements that require signing with a development certificate`
+- archive succeeds in some local flows but export fails in CI
+
+### Standard
+
+In `*.xcodeproj/project.pbxproj`, under `PBXProject -> attributes -> TargetAttributes`, ensure every entitlement-bearing target contains:
+
+- `DevelopmentTeam = <TEAM_ID>;`
+- `ProvisioningStyle = Automatic;`
+
+Apply this to the main app target and any embedded extension targets (for example Share Extension).
+
+### Verification checklist
+
+1. Confirm both keys are present in `TargetAttributes` for all entitlement-bearing targets.
+2. Run release archive with automatic provisioning updates:
+   - `xcodebuild -project <Project>.xcodeproj -scheme <Scheme> -configuration Release -destination 'generic/platform=iOS' -allowProvisioningUpdates archive`
+3. Run export from the archive using the expected distribution method for your pipeline.
+4. If CI shows entitlement-related signing errors, check `TargetAttributes` before changing export flags or forcing ad-hoc signing overrides.
+
+### Scope
+
+Apply this rule to all workspace apps and extensions that include entitlements.
