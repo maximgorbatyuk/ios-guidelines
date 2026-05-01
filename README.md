@@ -15,6 +15,7 @@ Reusable implementation standards derived from cross-app analysis of:
 - `ios-guidelines/onboarding-guideline.md` - Launch gating, onboarding structure/content, completion state, restart behavior.
 - `ios-guidelines/analytics-guideline.md` - Firebase/GA setup, Debug vs Release telemetry rules, `user_id` handling, privacy/compliance checks.
 - `ios-guidelines/potential-issue-fixes.md` - Cross-feature preventive fixes for configuration drift, entitlement tokenization, Xcode Cloud signing metadata, and release hardening.
+- `ios-guidelines/camera-document-capture-guideline.md` - Camera photo capture for documents, source picker UI, CameraView architecture, dismissal patterns, post-capture edit flow, NSCameraUsageDescription localization.
 
 ## Suggested Reading Order
 
@@ -25,8 +26,5 @@ Reusable implementation standards derived from cross-app analysis of:
 5. `ios-guidelines/app-version-checker-guideline.md`
 6. `ios-guidelines/analytics-guideline.md`
 7. `ios-guidelines/potential-issue-fixes.md`
+8. `ios-guidelines/camera-document-capture-guideline.md`
 
-## Current Status
-
-- All seven guideline documents are present.
-- `ios-guidelines/potential-issue-fixes.md` is the default place for cross-feature preventive standards.
